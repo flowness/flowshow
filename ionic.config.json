@@ -1,0 +1,7 @@
+{
+  "name": "flowshow",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}

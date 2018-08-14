@@ -1,12 +1,15 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { ErrorHandler, NgModule } from '@angular/core';
-import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
-import { SplashScreen } from '@ionic-native/splash-screen';
-import { StatusBar } from '@ionic-native/status-bar';
+import { BrowserModule } from "@angular/platform-browser";
+import { ErrorHandler, NgModule } from "@angular/core";
+import { IonicApp, IonicErrorHandler, IonicModule } from "ionic-angular";
+import { SplashScreen } from "@ionic-native/splash-screen";
+import { StatusBar } from "@ionic-native/status-bar";
 
-import { MyApp } from './app.component';
-import { HomePage } from '../pages/home/home';
-import { FlowService } from '../lib/flow-service';
+import { MyApp } from "./app.component";
+import { HomePage } from "../pages/home/home";
+import { FlowService } from "../lib/flow-service";
+import { HttpClientModule } from "@angular/common/http";
+import { IonicStorageModule } from "@ionic/storage";
+// import { HttpClientInMemoryWebApiModule } from "angular-in-memory-web-api";
 
 @NgModule({
   declarations: [
@@ -15,7 +18,9 @@ import { FlowService } from '../lib/flow-service';
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot(),
+    HttpClientModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -26,7 +31,8 @@ import { FlowService } from '../lib/flow-service';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    FlowService
+    FlowService,
+    Storage
   ]
 })
 export class AppModule {}

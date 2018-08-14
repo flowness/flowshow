@@ -7,8 +7,8 @@ import { StatusBar } from "@ionic-native/status-bar";
 import { MyApp } from "./app.component";
 import { HomePage } from "../pages/home/home";
 import { FlowService } from "../lib/flow-service";
-import { HttpClientModule } from "@angular/common/http";
 import { IonicStorageModule } from "@ionic/storage";
+import { HttpModule } from "@angular/http";
 // import { HttpClientInMemoryWebApiModule } from "angular-in-memory-web-api";
 
 @NgModule({
@@ -20,7 +20,7 @@ import { IonicStorageModule } from "@ionic/storage";
     BrowserModule,
     IonicModule.forRoot(MyApp),
     IonicStorageModule.forRoot(),
-    HttpClientModule
+    HttpModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

@@ -28,6 +28,7 @@ export class HomePage {
 
   updateCurrentFlow(): void {
     if (this.sn != undefined && this.sn != null && this.sn != "") {
+      console.log("update");
       this.flowService.getFlow(this.sn).subscribe(flowData => this.currentFlow = flowData["body"]);
     }
   }

@@ -11,6 +11,7 @@ export class HomePage {
   public inputsn: string = "";
   public sn: string = "";
   public currentFlow: number = -2;
+  public currentTimeStamp: string = "0";
 
   constructor(public navCtrl: NavController, public flowService: FlowService, public storage: Storage) {
     // flowService.getFlow(this.sn).subscribe(flowData => this.currentFlow = flowData[0]);;
@@ -29,8 +30,17 @@ export class HomePage {
   updateCurrentFlow(): void {
     if (this.sn != undefined && this.sn != null && this.sn != "") {
       console.log("update");
-      this.flowService.getFlow(this.sn).subscribe(flowData => this.currentFlow = flowData["body"]);
+      this.flowService.getFlow(this.sn).subscribe(flowData => {
+        this.currentFlow = flowData["body"]["Flow"];
+        this.currentTimeStamp = this.toDateTime(flowData["body"]["TimeStamp"]);
+      });
     }
+  }
+
+  private toDateTime(secs): string {
+    var t = new Date(1970, 0, 1); // Epoch
+    t.setSeconds(secs);
+    return (t.getFullYear() + '-' + ((t.getMonth() + 1)) + '-' + t.getDate() + ' ' +t.getHours() + ':' + t.getMinutes()+ ':' + t.getSeconds());
   }
 
   public changeSN(): void {
